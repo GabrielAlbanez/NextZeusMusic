@@ -1,16 +1,20 @@
-import TypewriterComponent from "typewriter-effect";
+"use client"
+import Typewriter from "typewriter-effect";
+
 
 export default function BackImg() {
   return (
     <>
       <div className="fixed h-screen w-screen z-0 bg-neutral-900">
-        <h2 className="digitando">
-          <Typewriter options={{
+        <h1 className="text-white">
+          Bem vindo
+          <Typewriter 
+           options={{
             strings : ["Bem", "Vindo", "Ao","ZeusMusic"],
             auto : true,
             loop : true,
           }}/>        
-        </h2>
+        </h1>
       </div>
     </>
   );
