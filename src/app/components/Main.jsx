@@ -28,7 +28,13 @@ export default function Main() {
   
 
   return (
-    <main className="bg-gradient-to-tr from-cyan-700  to-neutral-900 to-60% h-screen w-screen">
+    <motion.main 
+     
+    initial={{ opacity: 0 }} 
+  animate={{ opacity: 1 }} 
+  transition={{ duration: 1.5 }}
+    
+    className="bg-gradient-to-tr from-cyan-700  to-neutral-900 to-60% h-screen w-screen">
       <section className=" h-1/2 w-screen p-16 flex flex-col gap-20 justify-center items-center">
         <h1 className="text-white text-7xl">
           Bem Vindo a{" "}
@@ -85,6 +91,6 @@ export default function Main() {
           </motion.div>
         </figure>
       </section>
-    </main>
+    </motion.main>
   );
 }
