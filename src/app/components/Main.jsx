@@ -1,5 +1,8 @@
 "use client";
 
+import ZeusCard from "../assets/img/ZeusCard.jpg";
+import PoseidonCard from "../assets/img/Poseidon.jpg";
+import AriesCard from "../assets/img/aires.jpg";
 import { motion, useTime, useTransform } from "framer-motion";
 import React, { useEffect } from "react";
 import Image from "next/image";
@@ -80,17 +83,16 @@ export default function Main() {
           </motion.div>
         </figure>
       </section>
-        
-      <section className ="h-3/4 bg-gradient-to-t from-cyan-700  to-neutral-900 to-80% ">
+
+      <section className="h-3/4 bg-gradient-to-t from-cyan-700  to-neutral-900 to-90% ">
         <div className="flex items-center justify-center pt-16">
-      <h1 className="text-white text-6xl">Assinaturas</h1>
-      </div>
-        <div className=" seguradora flex justify-evenly items-center gap-10 pt-14 px-10">
-        <Card/>
-        <Card/>
-        <Card/>
+          <h1 className="text-white text-6xl">Assinaturas</h1>
         </div>
-        
+        <div className=" seguradora flex justify-evenly items-center gap-10 pt-14 px-10">
+          <Card link={ZeusCard} Titulo={"Zeus"} >Zeus</Card>
+          <Card>Poseidon</Card>
+          <Card>Aries</Card>
+        </div>
       </section>
     </motion.main>
   );
