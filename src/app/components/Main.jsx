@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Espacamento from "./Espacamento";
-import ZeusCard from "../assets/img/ZeusCard.jpg";
+import ZeusCard from "../assets/img/mitologia-grega-zeus.jpg";
 import PoseidonCard from "../assets/img/Poseidon.jpg";
 import AriesCard from "../assets/img/aires.jpg";
 import { motion } from "framer-motion";
@@ -58,9 +58,8 @@ export default function Main() {
     };
   }, []);
 
- 
+ console.log(tamanhoTela)
 
-  console.log(tamanhoTela);
 
   return (
     <motion.main
@@ -71,7 +70,7 @@ export default function Main() {
     >
       <section className="py-16 sm:py-32 px-6 sm:px-10 flex flex-col gap-10 sm:gap-20 justify-center items-center ">
         <h1 className="text-white text-4xl text-center sm:text-7xl">
-          Bem Vindo a {tamanhoTela < 400 ? <Espacamento />  : false}
+          Bem Vindo a {tamanhoTela < 500 ? <Espacamento />  : false}
           <span className="text-cyan-500 shadow-sm shadow-cyan-500/50">
             ZeusMusic!
           </span>{" "}
@@ -94,15 +93,15 @@ export default function Main() {
         <figure className="flex items-center justify-center relative">
           <motion.div className="carousel flex relative ">
             <motion.div
-              animate={{
-                x: ["0%", "10%", "-10%", "0%"],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 6,
-                ease: "linear",
-                yoyo: Infinity,
-              }}
+              // animate={{
+              //   x: ["0%", "10%", "-10%", "0%"],
+              // }}
+              // transition={{
+              //   repeat: Infinity,
+              //   duration: 6,
+              //   ease: "linear",
+              //   yoyo: Infinity,
+              // }}
               className="flex gap-6 items-center justify-center "
             >
               {imagens.map((imagenzinha) => (
@@ -128,13 +127,12 @@ export default function Main() {
         </div>
         <div className="seguradora flex justify-evenly items-center gap-10 pt-8 sm:pt-14 px-4 sm:px-10">
           <Card link={ZeusCard} Titulo={"Zeus"}>
-            Zeus
           </Card>
           <Card link={PoseidonCard} Titulo={"Poseidon"}>
-            Poseidon
+        
           </Card>
           <Card link={AriesCard} Titulo={"Aries"}>
-            Aries
+          
           </Card>
         </div>
       </section>
