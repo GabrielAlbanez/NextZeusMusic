@@ -1,5 +1,6 @@
 "use client"
-
+import { useState, useEffect } from 'react';  
+import Espacamento from "./Espacamento";
 import ZeusCard from "../assets/img/ZeusCard.jpg";
 import PoseidonCard from "../assets/img/Poseidon.jpg";
 import AriesCard from "../assets/img/aires.jpg";
@@ -23,7 +24,39 @@ const imagens = [
   iamge4,
 ];
 
+
+
 export default function Main() {
+
+  //state para salvar o tamnho recebido da tela
+
+  const [tamanhoTela,setTamanhoTela] = useState(0)
+
+ useEffect(()=>{
+  
+ //server para guaradar no satate o valor do tamnaho da tela 
+
+  function colocarTamnho(){
+    setTamanhoTela(window.innerWidth);
+
+  }
+
+  // server para que acontesa um evento de resize ou seja toda vez que o tamnho de tala for redefinido vai chamar a funcition colocarTamnho consequentemente redefinindo o state de tamanho
+  window.addEventListener("resize",colocarTamnho())
+
+  setTamanhoTela(window.innerWidth);
+
+  // usase o return no useEfect para quando o componente for desmontado
+  
+  return () => {
+    window.removeEventListener("resize", colocarTamnho);
+  };
+  
+ },[])
+
+  console.log(tamanhoTela)
+
+
   return (
     <motion.main
       initial={{ opacity: 0 }}
@@ -31,9 +64,10 @@ export default function Main() {
       transition={{ duration: 1.5 }}
       className="bg-neutral-900 min-h-screen"
     >
-      <section className="py-16 sm:py-32 px-6 sm:px-10 flex flex-col gap-10 sm:gap-20 justify-center items-center">
+      <section className="py-16 sm:py-32 px-6 sm:px-10 flex flex-col gap-10 sm:gap-20 justify-center items-center ">
         <h1 className="text-white text-4xl text-center sm:text-7xl">
           Bem Vindo a{" "}
+          {tamanhoTela < 400 ? <Espacamento/> : null}
           <span className="text-cyan-500 shadow-sm shadow-cyan-500/50">
             ZeusMusic!
           </span>{" "}
