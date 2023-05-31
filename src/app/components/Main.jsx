@@ -1,5 +1,5 @@
-"use client"
-import { useState, useEffect } from 'react';  
+"use client";
+import { useState, useEffect } from "react";
 import Espacamento from "./Espacamento";
 import ZeusCard from "../assets/img/ZeusCard.jpg";
 import PoseidonCard from "../assets/img/Poseidon.jpg";
@@ -24,38 +24,30 @@ const imagens = [
   iamge4,
 ];
 
-
-
 export default function Main() {
-
   //state para salvar o tamnho recebido da tela
 
-  const [tamanhoTela,setTamanhoTela] = useState(0)
+  const [tamanhoTela, setTamanhoTela] = useState(0);
 
- useEffect(()=>{
-  
- //server para guaradar no satate o valor do tamnaho da tela 
+  useEffect(() => {
+    //server para guaradar no satate o valor do tamnaho da tela
 
-  function colocarTamnho(){
+    function colocarTamnho() {
+      setTamanhoTela(window.innerWidth);
+    }
+
+    // server para que acontesa um evento de resize ou seja toda vez que o tamnho de tala for redefinido vai chamar a funcition colocarTamnho consequentemente redefinindo o state de tamanho
+    window.addEventListener("resize", colocarTamnho());
     setTamanhoTela(window.innerWidth);
 
-  }
+    // usase o return no useEfect para quando o componente for desmontado
 
-  // server para que acontesa um evento de resize ou seja toda vez que o tamnho de tala for redefinido vai chamar a funcition colocarTamnho consequentemente redefinindo o state de tamanho
-  window.addEventListener("resize",colocarTamnho())
+    return () => {
+      window.removeEventListener("resize", colocarTamnho);
+    };
+  }, []);
 
-  setTamanhoTela(window.innerWidth);
-
-  // usase o return no useEfect para quando o componente for desmontado
-  
-  return () => {
-    window.removeEventListener("resize", colocarTamnho);
-  };
-  
- },[])
-
-  console.log(tamanhoTela)
-
+  console.log(tamanhoTela);
 
   return (
     <motion.main
@@ -66,8 +58,7 @@ export default function Main() {
     >
       <section className="py-16 sm:py-32 px-6 sm:px-10 flex flex-col gap-10 sm:gap-20 justify-center items-center ">
         <h1 className="text-white text-4xl text-center sm:text-7xl">
-          Bem Vindo a{" "}
-          {tamanhoTela < 400 ? <Espacamento/> : null}
+          Bem Vindo a {tamanhoTela < 412 ? <Espacamento /> : null}
           <span className="text-cyan-500 shadow-sm shadow-cyan-500/50">
             ZeusMusic!
           </span>{" "}
@@ -77,7 +68,8 @@ export default function Main() {
             "ZuesMusic é um site de musica intuitivo e sofisticado"
           </p>
           <p className="text-lg sm:text-3xl text-white">
-            "Navegue por um oceano de gêneros musicais e mergulhe na diversidade"
+            "Navegue por um oceano de gêneros musicais e mergulhe na
+            diversidade"
           </p>
           <p className="text-lg text-white"></p>
         </div>
@@ -122,9 +114,15 @@ export default function Main() {
           <h1 className="text-white text-4xl sm:text-6xl">Assinaturas</h1>
         </div>
         <div className="seguradora flex justify-evenly items-center gap-10 pt-8 sm:pt-14 px-4 sm:px-10">
-          <Card link={ZeusCard} Titulo={"Zeus"}>Zeus</Card>
-          <Card link={PoseidonCard} Titulo={"Poseidon"}>Poseidon</Card>
-          <Card link={AriesCard} Titulo={"Aries"}>Aries</Card>
+          <Card link={ZeusCard} Titulo={"Zeus"}>
+            Zeus
+          </Card>
+          <Card link={PoseidonCard} Titulo={"Poseidon"}>
+            Poseidon
+          </Card>
+          <Card link={AriesCard} Titulo={"Aries"}>
+            Aries
+          </Card>
         </div>
       </section>
     </motion.main>
