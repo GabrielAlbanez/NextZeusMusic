@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 import { useState, useEffect } from "react";
 import Espacamento from "./Espacamento";
 import ZeusCard from "../assets/img/ZeusCard.jpg";
@@ -34,6 +35,14 @@ export default function Main() {
 
     function colocarTamnho() {
       setTamanhoTela(window.innerWidth);
+      window.addEventListener('resize', refrshPage);
+    }
+    
+     // essa function vai refazer o load da pagina ai eu coloco ela ali na colocar tamanho ass 
+     // toda vez que acontecer resize ou seja mudar o valor da tela vai chamar essa fuction ass vai resetar o tamho da tela e dar um refresh na pagina 
+
+    function refrshPage(){
+      location.reload();
     }
 
     // server para que acontesa um evento de resize ou seja toda vez que o tamnho de tala for redefinido vai chamar a funcition colocarTamnho consequentemente redefinindo o state de tamanho
@@ -43,9 +52,13 @@ export default function Main() {
     // usase o return no useEfect para quando o componente for desmontado
 
     return () => {
-      window.removeEventListener("resize", colocarTamnho);
+  
+      window.removeEventListener("resize", colocarTamnho,);
+      
     };
   }, []);
+
+ 
 
   console.log(tamanhoTela);
 
@@ -58,7 +71,7 @@ export default function Main() {
     >
       <section className="py-16 sm:py-32 px-6 sm:px-10 flex flex-col gap-10 sm:gap-20 justify-center items-center ">
         <h1 className="text-white text-4xl text-center sm:text-7xl">
-          Bem Vindo a {tamanhoTela < 412 ? <Espacamento /> : null}
+          Bem Vindo a {tamanhoTela < 400 ? <Espacamento />  : false}
           <span className="text-cyan-500 shadow-sm shadow-cyan-500/50">
             ZeusMusic!
           </span>{" "}
@@ -79,7 +92,7 @@ export default function Main() {
           Artistas mais tocados do momento
         </h1>
         <figure className="flex items-center justify-center relative">
-          <motion.div className="carousel flex relative">
+          <motion.div className="carousel flex relative ">
             <motion.div
               animate={{
                 x: ["0%", "10%", "-10%", "0%"],
@@ -90,12 +103,12 @@ export default function Main() {
                 ease: "linear",
                 yoyo: Infinity,
               }}
-              className="flex gap-6 items-center justify-center"
+              className="flex gap-6 items-center justify-center "
             >
               {imagens.map((imagenzinha) => (
                 <motion.div
                   key={imagenzinha}
-                  className="min-w-400px min-h-200px"
+                  className="min-w-400px min-h-200px "
                 >
                   <Image
                     src={imagenzinha}
