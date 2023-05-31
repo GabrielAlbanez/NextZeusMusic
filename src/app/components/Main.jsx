@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
 import ZeusCard from "../assets/img/ZeusCard.jpg";
 import PoseidonCard from "../assets/img/Poseidon.jpg";
 import AriesCard from "../assets/img/aires.jpg";
-import { motion, useTime, useTransform } from "framer-motion";
-import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+import React from "react";
 import Image from "next/image";
 import iamge1 from "../assets/img/Acdcx.jpg";
 import iamge2 from "../assets/img/Codplay.jpg";
@@ -29,32 +29,31 @@ export default function Main() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="bg-neutral-900 h-screen w-screen"
+      className="bg-neutral-900 min-h-screen"
     >
-      <section className=" h-1/2 w-screen p-16 flex flex-col gap-20 justify-center items-center">
-        <h1 className="text-white text-7xl">
+      <section className="py-16 sm:py-32 px-6 sm:px-10 flex flex-col gap-10 sm:gap-20 justify-center items-center">
+        <h1 className="text-white text-4xl text-center sm:text-7xl">
           Bem Vindo a{" "}
-          <span className=" text-cyan-500 shadow-sm  shadow-cyan-500/50">
+          <span className="text-cyan-500 shadow-sm shadow-cyan-500/50">
             ZeusMusic!
           </span>{" "}
         </h1>
-        <div className="flex items-center justify-center gap-20 flex-col pt-10">
-          <p className="text-3xl text-white">
+        <div className="flex items-center justify-center gap-10 sm:gap-20 flex-col pt-8 sm:pt-16">
+          <p className="text-lg sm:text-3xl text-center text-white">
             "ZuesMusic é um site de musica intuitivo e sofisticado"
           </p>
-          <p className="text-3xl text-white">
-            "Navegue por um oceano de gêneros musicais e mergulhe na
-            diversidade"
+          <p className="text-lg sm:text-3xl text-white">
+            "Navegue por um oceano de gêneros musicais e mergulhe na diversidade"
           </p>
-          <p className="text-2xl text-white"></p>
+          <p className="text-lg text-white"></p>
         </div>
       </section>
-      <section className="flex flex-col items-center justify-center gap-10">
-        <h1 className="text-white text-6xl h-1/2 flex justify-center items-center">
+      <section className="flex flex-col items-center justify-center gap-10 sm:gap-20 absolute">
+        <h1 className="text-white text-4xl sm:text-6xl text-center flex justify-center items-center">
           Artistas mais tocados do momento
         </h1>
-        <figure className=" flex items-center justify-center">
-          <motion.div className="carousel  w-screen h-96 flex ">
+        <figure className="flex items-center justify-center relative">
+          <motion.div className="carousel flex relative">
             <motion.div
               animate={{
                 x: ["0%", "10%", "-10%", "0%"],
@@ -65,7 +64,7 @@ export default function Main() {
                 ease: "linear",
                 yoyo: Infinity,
               }}
-              className="flex gap-6 items-center  justify-center "
+              className="flex gap-6 items-center justify-center"
             >
               {imagens.map((imagenzinha) => (
                 <motion.div
@@ -75,7 +74,7 @@ export default function Main() {
                   <Image
                     src={imagenzinha}
                     alt="iamgensCard"
-                    className="w-full h-80 rounded-lg shadow-xl  shadow-cyan-500/50"
+                    className="w-full h-80 rounded-lg shadow-xl shadow-cyan-500/50"
                   />
                 </motion.div>
               ))}
@@ -84,14 +83,14 @@ export default function Main() {
         </figure>
       </section>
 
-      <section className="h-3/4 bg-gradient-to-t from-cyan-700  to-neutral-900 to-90% ">
-        <div className="flex items-center justify-center pt-16">
-          <h1 className="text-white text-6xl">Assinaturas</h1>
+      <section className="py-44 mt-96 bg-gradient-to-t from-cyan-700 to-neutral-900">
+        <div className="flex items-center justify-center">
+          <h1 className="text-white text-4xl sm:text-6xl">Assinaturas</h1>
         </div>
-        <div className=" seguradora flex justify-evenly items-center gap-10 pt-14 px-10">
-          <Card link={ZeusCard} Titulo={"Zeus"} >Zeus</Card>
-          <Card>Poseidon</Card>
-          <Card>Aries</Card>
+        <div className="seguradora flex justify-evenly items-center gap-10 pt-8 sm:pt-14 px-4 sm:px-10">
+          <Card link={ZeusCard} Titulo={"Zeus"}>Zeus</Card>
+          <Card link={PoseidonCard} Titulo={"Poseidon"}>Poseidon</Card>
+          <Card link={AriesCard} Titulo={"Aries"}>Aries</Card>
         </div>
       </section>
     </motion.main>
