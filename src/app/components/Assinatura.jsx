@@ -5,34 +5,63 @@ import Image from "next/image";
 import ZeusCard from "../assets/img/mitologia-grega-zeus.jpg";
 import PoseidonCard from "../assets/img/Poseidon.jpg";
 import AriesCard from "../assets/img/aires.jpg";
+import PrivilegiosAssinatura from "./PrivilegioAssinatura";
 
 const AssianturaComponent = ({ img, titulo, chindren, descricao }) => {
   const { render, setRender, cardName, setCardname } =
     useContext(RenderContext);
 
+  const palavraDestaque = <span>1 ano</span>;
+
   return (
-    <div className="bg-gradient-to-tr from-cyan-700 from-10% to-neutral-900  w-1/2 h-1/2 flex gap-56 border-2 border-white rounded-2xl relative ">
-      {/* //ficar conteudo */}
-
-      <div className="h-24 p-10 float-left z-50">
-        {" "}
-        <button
-          onClick={() => {
-            setRender(false);
-          }}
-          className="text-white z-50"
-        >
-          voltar
-        </button>
+    <div className="bg-gradient-to-tr from-neutral-900 from-40% to-cyan-700 px-10 w-full sm:w-1/2 h-auto sm:h-1/2 flex items-start justify-between border-2 border-white rounded-2xl relative">
+      <div className="flex items-start justify-center h-24 flex-col float-left relative sm:h-10 pt-10">
+        <h1 className="text-white text-xl w-screen sm:text-4xl absolute ">Assinatura: {cardName}</h1>
+        {cardName === "Zeus" && (
+          <PrivilegiosAssinatura
+            descricao={"O que a assinatura Zeus lhe proporciona:"}
+            
+            tempo={`Esta assinatura possibilita você ouvir música sem anúncios por 1 ano`}
+            tempo2={"1 ano"}
+            privilegio1={"Você tem privilégios em qualidade sonora"}
+            privilegio2={"Você pode escutar músicas offline"}
+            privilegio3={"Você pode compartilhar os privilégios dessa assinatura com até 4 pessoas diferentes"}
+          />
+        )}
       </div>
-        
-      <div className="flex items-center justify-center h-24  float-left">
-        <h1 className="text-white text-3xl">Assinatura : {cardName} </h1>
+      <div>
+        <div className="h-96   sm:h-96  pt-9 pb-9 px-10 z-50 flex flex-col justify-between ml-24">
+          <button
+            onClick={() => {
+              setRender(false);
+            }}
+            className="text-white z-50"
+          >
+            Voltar
+          </button>
+          <div>
+            <button className="text-white z-50 relative bg-cyan-500 shadow-lg rounded-lg shadow-cyan-500/50 w-20 h-9 text-center transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">
+              Assinar
+            </button>
+          </div>
+        </div>
       </div>
-    
-
       <div className="w-full h-full absolute top-0 left-0 z-0 float-left">
-        <Image src={cardName === "Zeus" ? ZeusCard : cardName === "Poseidon" ? PoseidonCard : cardName === "Aries" ? AriesCard : null} layout="fill" objectFit="cover" className="opacity-10"/></div>
+        <Image
+          src={
+            cardName === "Zeus"
+              ? ZeusCard
+              : cardName === "Poseidon"
+              ? PoseidonCard
+              : cardName === "Aries"
+              ? AriesCard
+              : null
+          }
+          layout="fill"
+          objectFit="cover"
+          className="opacity-10"
+        />
+      </div>
     </div>
   );
 };
