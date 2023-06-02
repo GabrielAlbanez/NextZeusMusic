@@ -2,7 +2,7 @@
 
 import { app } from "/firebase";
 
-import { signInWithEmailAndPassword, getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, getAuth, createUserWithEmailAndPassword, GoogleAuthProvider,sendPasswordResetEmail,signOut,signInWithPopup} from "firebase/auth";
 
 import {
     addDoc,
@@ -15,6 +15,9 @@ import {
 
 
 const auth = getAuth(app); //essa contorna um objeto que vai me trazer todos os parmetros de autenticação
+const db = getFirestore(app) //essa const vai estar representando nosso banco de dados
+
+const googleProvider = new GoogleAuthProvider(); // vai armazenar o provedor do google
 
 /*
 aq serão inseridas as funções invocadas pela interface 
@@ -48,4 +51,50 @@ try{
 }
 }
 
-export { auth };
+const RecuperarSenha = async(email) =>{
+  try{
+    await sendPasswordResetEmail(auth,email)
+    alert("email para recuperação de senha enviado")
+
+  }catch(error){
+    alert("não foi possivel fazer o email de recuperaçõa")
+  }
+}
+
+const logout = () =>{
+  signOut(auth)
+}
+
+const entrarComGoogle = async() =>{
+try{
+const res = await signInWithPopup(auth, googleProvider)
+const user = res.user
+const q = query(collection(db, "users"), where("uid","==",user.uid))
+const docs = await getDocs(q)
+
+ if(docs.docs.length === 0){
+  await addDoc(collection(db,"users"),{
+      uid : user.id,
+      name : user.displayname,
+      authProvider : "google",
+      email : user.email
+  })
+ }
+
+
+
+
+}catch(error){
+  alert("n conseguimos fazer a sua verificação pelo google")
+}
+}
+
+export { 
+  auth,
+  loginComEmailESenha,
+  registrarComEmailESenha,
+  RecuperarSenha,
+  logout,
+  entrarComGoogle
+
+ }
