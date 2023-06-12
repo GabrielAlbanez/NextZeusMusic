@@ -16,7 +16,7 @@ const AssianturaComponent = ({ img, titulo, chindren, descricao }) => {
   return (
     <div className="bg-gradient-to-tr from-neutral-900 from-40% to-cyan-700 px-10 w-full sm:w-1/2 h-auto sm:h-1/2 flex items-start justify-between border-2 border-white rounded-2xl relative">
       <div className="flex items-start justify-center h-24 flex-col float-left relative sm:h-10 pt-10">
-        <h1 className="text-white text-xl w-screen sm:text-4xl absolute ">Assinatura: {cardName}</h1>
+        <h1 className="text-white  text-xl w-screen sm:text-4xl absolute mt-12 mb-20 ">Assinatura: {cardName}</h1>
         {cardName === "Zeus" && (
           <PrivilegiosAssinatura
             descricao={"O que a assinatura Zeus lhe proporciona:"}
@@ -24,8 +24,13 @@ const AssianturaComponent = ({ img, titulo, chindren, descricao }) => {
             tempo={`Esta assinatura possibilita você ouvir música sem anúncios por 1 ano`}
             tempo2={"1 ano"}
             privilegio1={"Você tem privilégios em qualidade sonora"}
+            privilegio1m={"Qualidade sonora +"}
             privilegio2={"Você pode escutar músicas offline"}
+            privilegio2m={"musicas ofline"}
             privilegio3={"Você pode compartilhar os privilégios dessa assinatura com até 4 pessoas diferentes"}
+            privilegio3m={"4 acessos simultaneos"}
+            custo={"264 reais"}
+            custo2={"264 reais"}
           />
         )}
       </div>

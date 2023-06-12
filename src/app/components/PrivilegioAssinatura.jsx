@@ -12,13 +12,13 @@ const PrivilegiosAssinatura = ({descricao,tempo,tempo2,privilegio1,privilegio1m,
 
 
   return(
-    <ol className="text-white pt-16 relative flex gap-8 flex-col  w-62 h-36 sm:pt-36 gap-10">
-          <li className="w-20 sm:w-full">{tamanhoTela < 400 ? "" : descricao}</li>
-          <li className="w-20 sm:w-full"> {tamanhoTela < 400 ? tempo2 : tempo}</li>
-          <li className="w-20 sm:w-full"> {tamanhoTela < 400 ? privilegio1m : privilegio1}</li>
-          <li className="w-20 sm:w-full">{tamanhoTela < 400 ? privilegio2m : privilegio2}</li>
-          <li className="w-20 sm:w-full">{tamanhoTela < 400 ? privilegio3m : privilegio3}</li>
-          <li className="w-20 sm:w-full">{tamanhoTela < 400 ? custo2 : custo}</li>
+    <ol className="text-white pt-20 relative flex gap-10 flex-col  w-62 h-36 sm:pt-36 gap-5">
+          <li className="w-24 sm:w-full">{tamanhoTela < 400 ? "" : descricao}</li>
+          <li className="w-24 sm:w-full"> {tamanhoTela < 400 ? tempo2 : tempo}</li>
+          <li className="w-24 sm:w-full"> {tamanhoTela < 400 ? privilegio1m : privilegio1}</li>
+          <li className="w-24 sm:w-full">{tamanhoTela < 400 ? privilegio2m : privilegio2}</li>
+          <li className="w-24 sm:w-full">{tamanhoTela < 400 ? privilegio3m : privilegio3}</li>
+          <li className="w-24 sm:w-full">{tamanhoTela < 400 ? custo2 : custo}</li>
         </ol>
   )
 
